@@ -11,7 +11,7 @@ import SwiftUI
 struct LibrarianApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
         }
     }
 }
