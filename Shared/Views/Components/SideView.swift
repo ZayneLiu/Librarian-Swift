@@ -7,7 +7,21 @@
 
 import SwiftUI
 
+class SelectedFolder: Identifiable {
+	init(url: URL) {
+		name = url.lastPathComponent
+		self.url = url
+	}
+
+	var id = UUID()
+	var name: String = ""
+	var url = URL(fileURLWithPath: "")
+}
+
 struct SideView: View {
+	@State var folders: [SelectedFolder] = []
+	@State var isPresented = false
+
 	var body: some View {
 		VStack(spacing: 10, content: {
 			// Sidebar Title
@@ -17,18 +31,36 @@ struct SideView: View {
 					.font(.title2)
 			}).frame(maxHeight: TOP_BAR_HEIGHT)
 
-			// TODO: Side bar
+			#warning("TODO: Side bar")
 			Divider()
-			VStack(content: {
-				FolderItem(folder: "Folder1")
-				FolderItem(folder: "Folder2")
-				FolderItem(folder: "Folder3")
-				FolderItem(folder: "Folder4")
-				Spacer()
+
+			VStack(alignment: .center, content: {
+				Button("Select Folder", action: {
+					self.isPresented = true
+				}).fileImporter(
+					isPresented: $isPresented,
+					allowedContentTypes: [.folder],
+					allowsMultipleSelection: true
+				) { res in
+					do {
+						for url in try res.get() {
+							folders.append(SelectedFolder(url: url))
+						}
+						print(folders)
+					} catch {
+						print(error)
+					}
+				}
 			})
+			VStack(content: {
+				ForEach(folders) { folder in
+					FolderItem(folder: folder)
+				}
+
+				Spacer()
+			}).padding(.horizontal, 20)
 
 		}).frame(minWidth: 120, alignment: .init(horizontal: .center, vertical: .top))
-			.frame(maxWidth: 160)
 			.padding(.vertical, 15)
 	}
 }
@@ -36,7 +68,7 @@ struct SideView: View {
 struct SideBar_Previews: PreviewProvider {
 	static var previews: some View {
 		Group {
-			SideView().frame(width: 120)
+			SideView()
 			RootView()
 		}
 	}

@@ -6,16 +6,36 @@ import Foundation
 import SwiftUI
 
 struct FolderItem: View {
-	@State(initialValue: true) var isOn: Bool
-	var folderName = ""
+	@State var isOn: Bool = true
+	@State var isSheetPresented: Bool = false
 
-	init(folder: String) {
-		folderName = folder
+	var folder: SelectedFolder
+
+	init(folder: SelectedFolder) {
+		self.folder = folder
 	}
 
 	var body: some View {
 		HStack {
-			Toggle("\(folderName)", isOn: $isOn)
+			Toggle(isOn: $isOn) {
+				#if os(macOS)
+					Button(action: { isSheetPresented = true }) {
+						Image(systemName: "info.circle").foregroundColor(.blue)
+					}.buttonStyle(PlainButtonStyle())
+				#endif
+
+				Image(systemName: "folder")
+				Text("\(folder.name)")
+
+				#if os(iOS)
+					Button(action: { isSheetPresented = true }) {
+						Image(systemName: "info.circle").foregroundColor(.blue)
+					}.buttonStyle(PlainButtonStyle())
+				#endif
+
+			}.popover(isPresented: $isSheetPresented, content: {
+				Text("\(folder.url.path)").padding()
+			})
 		}
 	}
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-var TOP_BAR_HEIGHT:CGFloat=36.0
+var TOP_BAR_HEIGHT: CGFloat = 36.0
 
 class EnvObj: ObservableObject {
 	@Published var text_input = ""
@@ -20,13 +20,15 @@ class EnvObj: ObservableObject {
 
 struct RootView: View {
 	var body: some View {
-		HSplitView {
-			SideView()
-			MainView()
-		}.frame(idealWidth: 600,
-		        minHeight: 500,
-		        idealHeight: 500,
-		        alignment: .top)
+		VStack(content: {
+			NavigationView(content: {
+				SideView()
+				MainView()
+			}).frame(idealWidth: 600,
+			         minHeight: 500,
+			         alignment: .center)
+
+		}).frame(alignment: .top)
 	}
 }
 

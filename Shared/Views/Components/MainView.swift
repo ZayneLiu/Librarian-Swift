@@ -19,7 +19,7 @@ struct MainView: View {
 
 					Button("Search") {
 						print(envObj.text_input)
-						// TODO: Call search API
+						#warning("TODO: Call search API")
 					}
 				})
 			}).frame(maxHeight: TOP_BAR_HEIGHT)
