@@ -7,8 +7,8 @@
 
 import Foundation
 
-class SearchResult: Identifiable {
-	var id = UUID()
+class File: Identifiable {
+//	var id = UUID()
 	var result: String
 	init(result: String) {
 		self.result = result

@@ -7,18 +7,19 @@
 
 import SwiftUI
 
-struct MainView: View {
-	@State var envObj = EnvObj()
+struct SearchView: View {
+	@ObservedObject var model = SearchViewModel.model
+
 	var body: some View {
 		VStack(spacing: 10, content: {
 			VStack(content: {
 				HStack(content: {
 					Text("Search Keyword:")
-					TextField("Input", text: $envObj.text_input)
+					TextField("Input", text: $model.text_input)
 						.frame(width: 150, alignment: .center)
 
 					Button("Search") {
-						print(envObj.text_input)
+						print(model.text_input)
 						#warning("TODO: Call search API")
 					}
 				})
@@ -27,20 +28,16 @@ struct MainView: View {
 			Text("Search Result:")
 			List {
 				// List of search result
-				ForEach(envObj.resultList) { item in
+				ForEach(model.resultList) { item in
 					Text("\(item.result)")
 				}
 			}
-		}).padding(.vertical, 15)
-			.frame(alignment: .top)
+		}).frame(alignment: .top)
 	}
 }
 
 struct Main_Previews: PreviewProvider {
 	static var previews: some View {
-		Group {
-			MainView()
-			RootView()
-		}
+		SearchView()
 	}
 }
