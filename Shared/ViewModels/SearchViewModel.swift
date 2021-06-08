@@ -18,9 +18,9 @@ class SearchViewModel: ObservableObject {
 	private init() {}
 
 	@Published var text_input = ""
-	@Published var resultList: [File] = [
-		File(result: "a"),
-		File(result: "b"),
-		File(result: "c"),
+	@Published var resultList: [SearchResult] = [
+		SearchResult(file: File(url: URL(fileURLWithPath: "~/Workspace/TODO.org")), occurances: 12),
+		SearchResult(file: File(url: URL(fileURLWithPath: "~/Workspace/TODO.org")), occurances: 12),
+		SearchResult(file: File(url: URL(fileURLWithPath: "~/Workspace/TODO.org")), occurances: 12),
 	]
 }

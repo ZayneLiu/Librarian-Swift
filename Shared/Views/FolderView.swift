@@ -48,6 +48,6 @@ struct FolderView: View {
 
 struct SideBar_Previews: PreviewProvider {
 	static var previews: some View {
-		FolderView()
+		FolderView().frame(width: 200)
 	}
 }

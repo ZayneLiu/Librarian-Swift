@@ -25,13 +25,22 @@ struct SearchView: View {
 				})
 			}).frame(maxHeight: TOP_BAR_HEIGHT)
 			Divider()
-			Text("Search Result:")
-			List {
-				// List of search result
-				ForEach(model.resultList) { item in
-					Text("\(item.result)")
-				}
+
+			HStack {
+				Text("Search Result:")
+				Text("Found \(model.resultList.count) file(s)")
+					.font(.subheadline)
+					.italic()
 			}
+
+			List(content: {
+				// List of search result
+				ForEach(model.resultList) { result in
+					// Search Result File item
+					#warning("Search Result File item")
+					SearchResultItem(result: SearchResult(searchResult: result))
+				}
+			})
 		}).frame(alignment: .top)
 	}
 }

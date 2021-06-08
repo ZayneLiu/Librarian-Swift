@@ -9,8 +9,12 @@ import Foundation
 
 class File: Identifiable {
 //	var id = UUID()
-	var result: String
-	init(result: String) {
-		self.result = result
+	var name: String
+
+	var url = URL(fileURLWithPath: "")
+
+	init(url: URL) {
+		name = url.lastPathComponent
+		self.url = url
 	}
 }
