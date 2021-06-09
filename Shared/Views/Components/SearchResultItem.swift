@@ -17,46 +17,45 @@ struct SearchResultItem: View {
 	var body: some View {
 		VStack(alignment: .leading, content: {
 			Divider()
+
 			HStack(content: {
-				Image(systemName: "doc.text.fill")
-					.foregroundColor(.accentColor)
-					.font(.largeTitle)
-					.padding(0)
+				HStack(content: {
+					Image(systemName: "doc.text.fill")
+						.foregroundColor(.accentColor)
+						.font(.largeTitle)
+						.padding(0)
 
-				VStack(alignment: .leading, spacing: 5, content: {
-					HStack(content: {
-						Text("File\t")
-							.font(Font.custom("Monaco", size: 13))
-							.padding(.horizontal, 5)
-							// .background(Color.gray)
-							.foregroundColor(.accentColor)
-							.cornerRadius(3.0)
-						Text("\(result.file.url.lastPathComponent)")
+					VStack(alignment: .leading, spacing: 5, content: {
+						HStack(content: {
+							ResultField(fieldName: "File", content: {
+								Text("\(result.file.url.lastPathComponent)")
+							})
+						})
+
+						HStack(content: {
+							ResultField(fieldName: "Path", content: {
+								Text("\(result.file.url.relativePath)")
+								Image(systemName: "magnifyingglass.circle.fill").foregroundColor(.gray)
+							})
+						})
+
+						HStack(content: {
+							ResultField(fieldName: "Type", content: {
+								#warning("File type")
+								Text("Audio/Text")
+							})
+						})
+
+						HStack(content: {
+							ResultField(fieldName: "Match", content: {
+								Text("\(result.occurances)")
+							})
+						})
 					})
-
-					HStack(content: {
-						Text("Path\t")
-							.font(Font.custom("Monaco", size: 13))
-							.padding(.horizontal, 5)
-							// .background(Color.gray)
-							.foregroundColor(.accentColor)
-							.cornerRadius(3.0)
-						Text("\(result.file.url.relativePath)")
-						Image(systemName: "magnifyingglass.circle.fill").foregroundColor(.gray)
-					})
-
-					HStack(content: {
-						Text("Matches")
-							.font(Font.custom("Monaco", size: 13))
-							.padding(.horizontal, 5)
-							// .background(Color.gray)
-							.foregroundColor(.accentColor)
-							.cornerRadius(3.0)
-						Text("\(result.occurances)")
-					})
-				})
-			}).padding(2)
-
+				}).padding(2)
+					.padding(.horizontal, 18)
+				Divider()
+			})
 		})
 	}
 }
