@@ -7,7 +7,7 @@
 
 import Foundation
 
-class File: Identifiable {
+class FileModel: Identifiable {
 //	var id = UUID()
 	var name: String
 
