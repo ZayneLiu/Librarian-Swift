@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-var TOP_BAR_HEIGHT: CGFloat = 36.0
+var TOP_BAR_HEIGHT: CGFloat = 30.0
 class EnvironmentObj: ObservableObject {
 	@Published var isActive = true
 }
@@ -45,7 +45,7 @@ struct RootView: View {
 
 			})
 			#if os(iOS)
-				.navigationBarTitle("Librarian")
+				.navigationBarTitle("Folder")
 			#endif
 
 			SearchView().navigationTitle("Search")

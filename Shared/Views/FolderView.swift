@@ -14,23 +14,26 @@ struct FolderView: View {
 	var body: some View {
 		VStack(alignment: .center, spacing: 10, content: {
 			HStack(alignment: .center) {
-				// Button: Add folder to index
-				Button("Select Folder", action: {
-					self.isPresented = true
-				}).fileImporter(
-					isPresented: $isPresented,
-					allowedContentTypes: [.folder],
-					allowsMultipleSelection: true
-				) { res in
-					for url in try! res.get() {
-						model.addFolder(folder: FolderModel(url: url))
-					}
-				}
+				Text("\(Image(systemName: "books.vertical.fill")) Librarian")
+					.font(.title)
 			}.frame(height: TOP_BAR_HEIGHT, alignment: .center)
 			Divider()
 
+			// Button: Add folder to index
+			Button("Select Folder", action: {
+				self.isPresented = true
+			}).fileImporter(
+				isPresented: $isPresented,
+				allowedContentTypes: [.folder],
+				allowsMultipleSelection: true
+			) { res in
+				for url in try! res.get() {
+					model.addFolder(folder: FolderModel(url: url))
+				}
+			}
+
 			// Folder list
-			VStack(alignment: .leading, spacing: 0, content: {
+			VStack(alignment: .leading, spacing: 10, content: {
 				ForEach(model.folders) { folder in
 					FolderItem(folder: folder)
 				}
