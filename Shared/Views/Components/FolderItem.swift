@@ -6,7 +6,7 @@ import Foundation
 import SwiftUI
 
 struct FolderItem: View {
-	init(folder: Folder) {
+	init(folder: FolderModel) {
 		self.folder = folder
 	}
 
@@ -14,7 +14,7 @@ struct FolderItem: View {
 	@State var isSheetPresented: Bool = false
 	@State var isHovered: Bool = false
 
-	var folder: Folder
+	var folder: FolderModel
 
 	var body: some View {
 		HStack {
@@ -32,7 +32,6 @@ struct FolderItem: View {
 					.frame(minHeight: 18)
 
 				#if os(macOS)
-					Spacer()
 					// Button: Remove folder from index database
 					if isHovered {
 						Button(action: { removeIndexedFolder() }) {

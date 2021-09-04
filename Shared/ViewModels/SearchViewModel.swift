@@ -5,6 +5,7 @@
 //  Created by Zayne on 02/06/2021.
 //
 
+import Custodian
 import Foundation
 
 // class SearchResultViewModel: ObservableObject {
@@ -19,8 +20,9 @@ class SearchViewModel: ObservableObject {
 
 	@Published var text_input = ""
 	@Published var resultList: [SearchResult] = [
-		SearchResult(file: File(url: URL(fileURLWithPath: "~/Workspace/TODO.org")), occurances: 12),
-		SearchResult(file: File(url: URL(fileURLWithPath: "~/Workspace/TODO.org")), occurances: 12),
-		SearchResult(file: File(url: URL(fileURLWithPath: "~/Workspace/TODO.org")), occurances: 12),
+		//		SearchResult(file: File(url: URL(fileURLWithPath: "~/Workspace/TODO.org")), keyword: "Hamlet", occurrences: []),
+		//		SearchResult(file: File(url: URL(fileURLWithPath: "~/Workspace/TODO.org")), keyword: "Hamlet", occurrences: []),
+		//		SearchResult(file: File(url: URL(fileURLWithPath: "~/Workspace/TODO.org")), keyword: "Hamlet", occurrences: []),
+		//		SearchResult(file: File(url: URL(fileURLWithPath: "~/Workspace/TODO.org")), keyword: "Hamlet", occurrences: []),
 	]
 }
