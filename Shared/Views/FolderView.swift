@@ -12,42 +12,37 @@ struct FolderView: View {
 	@State var isPresented = false
 
 	var body: some View {
-		VStack(spacing: 10, content: {
-			// Sidebar Title
-			VStack(content: {
-				Text("Folders")
-					.fontWeight(.bold)
-					.font(.title2)
-			}).frame(maxHeight: TOP_BAR_HEIGHT)
-
-			#warning("TODO: Side bar")
-			Divider()
-
-			// Button: Add folder to index
-			Button("Select Folder", action: {
-				self.isPresented = true
-			})
-				// START: FileImporter
-				.fileImporter(
+		VStack(alignment: .center, spacing: 10, content: {
+			HStack(alignment: .center) {
+				// Button: Add folder to index
+				Button("Select Folder", action: {
+					self.isPresented = true
+				}).fileImporter(
 					isPresented: $isPresented,
 					allowedContentTypes: [.folder],
 					allowsMultipleSelection: true
 				) { res in
-					for url in try! res.get() { model.addFolder(folder: Folder(url: url)) }
-				} // END: FileImporter
+					for url in try! res.get() {
+						model.addFolder(folder: FolderModel(url: url))
+					}
+				}
+			}.frame(height: TOP_BAR_HEIGHT, alignment: .center)
+			Divider()
 
 			// Folder list
-			List(model.folders) { folder in
-				FolderItem(folder: folder)
-			}
+			VStack(alignment: .leading, spacing: 0, content: {
+				ForEach(model.folders) { folder in
+					FolderItem(folder: folder)
+				}
+			})
 
 			Spacer()
-		}).frame(minWidth: 200)
+		}).padding()
 	}
 }
 
 struct SideBar_Previews: PreviewProvider {
 	static var previews: some View {
-		FolderView().frame(width: 200)
+		FolderView()
 	}
 }
