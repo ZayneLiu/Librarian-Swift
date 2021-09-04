@@ -14,8 +14,9 @@ struct FolderView: View {
 	var body: some View {
 		VStack(alignment: .center, spacing: 10, content: {
 			HStack(alignment: .center) {
-				Text("\(Image(systemName: "books.vertical.fill")) Librarian")
-					.font(.title)
+				HStack {
+					Text("\(Image(systemName: "folder.badge.plus"))Folders")
+				}.font(.title2)
 			}.frame(height: TOP_BAR_HEIGHT, alignment: .center)
 			Divider()
 
