@@ -5,6 +5,7 @@
 //  Created by Zayne on 06/06/2021.
 //
 
+import Custodian
 import Foundation
 import SwiftUI
 
@@ -12,18 +13,19 @@ class FolderViewModel: ObservableObject {
 	public static var model = FolderViewModel()
 	private init() {}
 
-	@Published var folders: [Folder] = []
+	@Published var folders: [FolderModel] = []
 
-	public func addFolder(folder: Folder) {
+	public func addFolder(folder: FolderModel) {
 		#warning("Subfolder detection")
 		// B is a sub folder of A?
 
 		#warning("Call Index API")
 
 		folders.append(folder)
+		folder.index()
 	}
 
-	public func removeFolder(folder: Folder) {
+	public func removeFolder(folder: FolderModel) {
 		guard
 			let index = folders.firstIndex(where: { f in f == folder })
 		else { print("not found"); return }
@@ -32,11 +34,13 @@ class FolderViewModel: ObservableObject {
 
 		folders.remove(at: index)
 	}
-}
 
-// class FolderViewEnvObj: ObservableObject {
-//	static let envObj = FolderViewEnvObj()
-//
-////	private init() {}
-////	@Published var folders: [Folder] = []
-// }
+	public func search(keyword: String) -> [SearchResult] {
+		var res: [SearchResult] = []
+
+		folders.forEach { model in
+			res.insert(contentsOf: model.search(keyword: keyword), at: 0)
+		}
+		return res
+	}
+}
