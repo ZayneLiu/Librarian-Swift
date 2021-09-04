@@ -29,20 +29,11 @@ struct RootView: View {
 				Divider()
 
 				NavigationLink(destination: FolderView().navigationTitle("Folders")) {
-					HStack {
-						Image(systemName: "folder.badge.plus")
-							.frame(width: 25, alignment: .center)
-						Text("Folders")
-					}.font(.title2)
+					Text("\(Image(systemName: "folder.badge.plus"))Folders").font(.title2)
 				}.buttonStyle(.plain)
 
 				NavigationLink(destination: SearchView().navigationTitle("Search")) {
-					HStack {
-						// Image(systemName: "doc.text.magnifyingglass")
-						Image(systemName: "magnifyingglass")
-							.frame(width: 25, alignment: .center)
-						Text("Search")
-					}.font(.title2)
+					Text("\(Image(systemName: "magnifyingglass"))Search").font(.title2)
 				}.buttonStyle(.plain)
 				Spacer()
 			})
