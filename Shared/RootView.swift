@@ -8,7 +8,6 @@
 import Foundation
 import SwiftUI
 
-
 struct RootView: View {
 	var body: some View {
 		VStack(alignment: .center, content: {
@@ -16,11 +15,14 @@ struct RootView: View {
 			Text("\(Image(systemName: "books.vertical.fill")) Librarian").font(.largeTitle)
 
 			TabView {
-				FolderView().tabItem {
+				// TODO: Badges to show updates in folders and stuff, (needs to re index)
+                FolderView().badge(10)
+                    .tabItem {
 					Image(systemName: "folder")
 					Text("Folders")
 				}
-				SearchView().tabItem {
+				SearchView()
+                    .tabItem {
 					Image(systemName: "magnifyingglass")
 					Text("Search")
 				}
