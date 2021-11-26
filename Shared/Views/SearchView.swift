@@ -29,9 +29,8 @@ struct SearchView: View {
 						model.resultList = searchRes
 					}
 				})
-			}).frame(maxHeight: TOP_BAR_HEIGHT)
-
-			Divider()
+			})
+					// .frame(maxHeight: TOP_BAR_HEIGHT)
 
 			HStack(content: {
 				Text("Search Result:")
