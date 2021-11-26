@@ -12,15 +12,16 @@ struct LibrarianApp: App {
 	var body: some Scene {
 		WindowGroup {
 			RootView()
-				.toolbar {
-					// Create a sidebar toggle button
-					ToolbarItem(placement: .navigation) {
-						Button(action: toggleSidebar, label: {
-							Image(systemName: "sidebar.left")
-						})
-					}
-				}
 		}
+				// .toolbar {
+				// 	// Create a sidebar toggle button
+				// 	ToolbarItem(placement: .navigation) {
+				// 		Button(action: toggleSidebar, label: {
+				// 			Image(systemName: "sidebar.left")
+				// 		})
+				// 	}
+				// }
+		// }
 //		.commands {
 //			CommandGroup(after: .sidebar) {
 //				Button(action: {}) {
@@ -34,10 +35,10 @@ struct LibrarianApp: App {
 	}
 
 	/// Sidebar toggle function
-	private func toggleSidebar() {
-		#if os(iOS)
-		#else
-			NSApp.keyWindow?.firstResponder?.tryToPerform(#selector(NSSplitViewController.toggleSidebar(_:)), with: nil)
-		#endif
-	}
+	// private func toggleSidebar() {
+	// 	#if os(iOS)
+	// 	#else
+	// 		NSApp.keyWindow?.firstResponder?.tryToPerform(#selector(NSSplitViewController.toggleSidebar(_:)), with: nil)
+	// 	#endif
+	// }
 }
