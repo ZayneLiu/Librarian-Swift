@@ -11,6 +11,7 @@ import SwiftUI
 
 class FolderViewModel: ObservableObject {
 	public static var model = FolderViewModel()
+
 	private init() {}
 
 	@Published var folders: [FolderModel] = []
@@ -26,8 +27,7 @@ class FolderViewModel: ObservableObject {
 	}
 
 	public func removeFolder(folder: FolderModel) {
-		guard
-			let index = folders.firstIndex(where: { f in f == folder })
+		guard let index = folders.firstIndex(where: { f in f == folder })
 		else { print("not found"); return }
 
 		#warning("remove folder from index DB")
