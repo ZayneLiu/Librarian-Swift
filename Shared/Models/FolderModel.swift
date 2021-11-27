@@ -10,7 +10,7 @@ import Foundation
 
 /// Folder model
 class FolderModel: Identifiable {
-	static func == (lhs: FolderModel, rhs: FolderModel) -> Bool {
+	static func ==(lhs: FolderModel, rhs: FolderModel) -> Bool {
 		lhs.id == rhs.id
 	}
 
@@ -34,5 +34,15 @@ class FolderModel: Identifiable {
 
 	func search(keyword: String) -> [SearchResult] {
 		folder.search(keyword: keyword)
+	}
+
+	func getFileTypes() -> String {
+
+		var res: Set<String> = Set<String>()
+
+		folder.files.forEach { file in
+			res.insert(file.ext)
+		}
+		return res.joined(separator: ", ")
 	}
 }
