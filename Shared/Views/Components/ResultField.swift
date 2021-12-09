@@ -20,10 +20,10 @@ struct ResultField<Content>: View where Content: View {
 		HStack(content: {
 			HStack {
 				Text("\(fieldName)")
-					.font(Font.custom("Monaco", size: 13))
-					.padding(.horizontal, 5)
-					.foregroundColor(.accentColor)
-					.cornerRadius(3.0)
+						.font(Font.custom("Monaco", size: 15))
+						.padding(.horizontal, 5)
+						.foregroundColor(.accentColor)
+						.cornerRadius(3.0)
 			}.frame(minWidth: 55, alignment: .trailing)
 
 			content()

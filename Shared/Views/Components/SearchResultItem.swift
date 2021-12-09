@@ -15,7 +15,6 @@ struct SearchResultItem: View {
 	}
 
 	@State var isPresented = true
-
 	private var result: SearchResult
 
 	private func getShortFilePath() -> String {
@@ -29,10 +28,10 @@ struct SearchResultItem: View {
 	var body: some View {
 		VStack(alignment: .leading) {
 			HStack(spacing: 0, content: {
-				Image(systemName: "doc.text.fill")
-					.foregroundColor(.accentColor)
-					.font(.largeTitle)
-					.padding(0)
+				Image(systemName: "doc.richtext.fill")
+						.foregroundColor(.accentColor)
+						.font(.largeTitle)
+						.padding(0)
 
 				VStack(alignment: .leading, spacing: 5, content: {
 					HStack(content: {
@@ -60,10 +59,9 @@ struct SearchResultItem: View {
 					HStack(content: {
 						ResultField(fieldName: "Match", content: {
 							Text("\(result.occurrences.count)")
-						}) 
+						})
 					})
 				})
-
 			})
 
 			DisclosureGroup("Matches") {
@@ -79,13 +77,13 @@ struct SearchResultItem: View {
 						}
 					})
 				}.frame(maxHeight: 300)
-			}
 			}.padding(.leading)
 		}.padding(2)
 	}
 
 	func HighLightText(str: String, higlight: String) -> Text {
-		guard !str.isEmpty, !higlight.isEmpty else { return Text(str) }
+		guard !str.isEmpty, !higlight.isEmpty
+		else { return Text(str) }
 
 		var result = Text("")
 
@@ -95,7 +93,8 @@ struct SearchResultItem: View {
 			// Get rid of `punctuationCharacters` e.g., ",", ".", etc.
 			if word.trimmingCharacters(in: .punctuationCharacters).lowercased() == higlight.lowercased() {
 				result = result + Text(word + " ").bold().foregroundColor(Color.blue)
-			} else {
+			}
+			else {
 				result = result + Text(word + " ")
 			}
 		}
@@ -107,7 +106,7 @@ struct SearchResultItem: View {
 struct SearchResult_Previews: PreviewProvider {
 	static var previews: some View {
 		SearchResultItem(
-			result: SearchResult(file: File(url: URL(fileURLWithPath: "~/Workspace/TODO.org")), keyword: "Hamlet", occurrences: [])
+				result: SearchResult(file: File(url: URL(fileURLWithPath: "~/Workspace/TODO.org")), keyword: "Hamlet", occurrences: [])
 		)
 	}
 }

@@ -8,9 +8,8 @@
 import Foundation
 
 class FileModel: Identifiable {
-//	var id = UUID()
+	//	var id = UUID()
 	var name: String
-
 	var url = URL(fileURLWithPath: "")
 
 	init(url: URL) {

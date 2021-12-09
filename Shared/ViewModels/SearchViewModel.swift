@@ -11,7 +11,6 @@ import Foundation
 // class SearchResultViewModel: ObservableObject {
 //	@Published var searchResult = []
 // }
-
 class SearchViewModel: ObservableObject {
 	/// Singleton
 	public static let model = SearchViewModel()

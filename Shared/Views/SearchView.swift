@@ -11,18 +11,17 @@ import SwiftUI
 struct SearchView: View {
 	@ObservedObject var model = SearchViewModel.model
 	@ObservedObject var folderModel = FolderViewModel.model
-
 	var body: some View {
 		VStack(spacing: 10, content: {
 			VStack(content: {
 				HStack(content: {
 					TextField("Keyword", text: $model.text_input)
-						.disableAutocorrection(true)
-						.textFieldStyle(RoundedBorderTextFieldStyle())
-						.frame(width: 200, alignment: .center)
-					#if os(iOS)
-						.autocapitalization(.none)
-					#endif
+							.disableAutocorrection(true)
+							.textFieldStyle(RoundedBorderTextFieldStyle())
+							.frame(width: 200, alignment: .center)
+								#if os(iOS)
+							.autocapitalization(.none)
+								#endif
 
 					Button("Search") {
 						let searchRes = folderModel.search(keyword: model.text_input)
@@ -30,7 +29,7 @@ struct SearchView: View {
 					}
 				})
 			})
-					// .frame(maxHeight: TOP_BAR_HEIGHT)
+			// .frame(maxHeight: TOP_BAR_HEIGHT)
 
 			HStack(content: {
 				Text("Search Result:")
