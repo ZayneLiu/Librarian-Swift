@@ -80,6 +80,7 @@ struct SearchResultItem: View {
 					})
 				}.frame(maxHeight: 300)
 			}
+			}.padding(.leading)
 		}.padding(2)
 	}
 
