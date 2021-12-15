@@ -16,20 +16,18 @@ struct RootView: View {
 
 			TabView {
 				// TODO: Badges to show updates in folders and stuff, (needs to re index)
-                FolderView().badge(10)
-                    .tabItem {
-					Image(systemName: "folder")
-					Text("Folders")
-				}
+				FolderView().badge(10)
+				            .tabItem {
+					            Image(systemName: "folder")
+					            Text("Folders")
+				            }
 				SearchView()
-                    .tabItem {
-					Image(systemName: "magnifyingglass")
-					Text("Search")
-				}
+						.tabItem {
+							Image(systemName: "magnifyingglass")
+							Text("Search")
+						}
 			}
-
 		}).padding()
-
 	}
 }
 
@@ -49,7 +47,8 @@ extension View {
 	@ViewBuilder func `if`<Content: View>(_ condition: Bool, transform: (Self) -> Content) -> some View {
 		if condition {
 			transform(self)
-		} else {
+		}
+		else {
 			self
 		}
 	}
