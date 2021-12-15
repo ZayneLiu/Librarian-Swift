@@ -51,11 +51,15 @@ struct SearchResultItem: View {
 
 					HStack(content: {
 						ResultField(fieldName: "Type", content: {
-							#warning("File type")
-							Text("\(result.file.type.rawValue)")
+							Text("\(result.file.type)")
 						})
 					})
 
+					HStack(content: {
+						ResultField(fieldName: "Topic", content: {
+							Text("\(result.file.textClassification.capitalized)")
+						})
+					})
 					HStack(content: {
 						ResultField(fieldName: "Match", content: {
 							Text("\(result.occurrences.count)")
@@ -63,7 +67,6 @@ struct SearchResultItem: View {
 					})
 				})
 			})
-
 			DisclosureGroup("Matches") {
 				ScrollView {
 					LazyVStack(alignment: .leading, content: {
