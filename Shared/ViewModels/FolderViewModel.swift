@@ -20,8 +20,6 @@ class FolderViewModel: ObservableObject {
 		#warning("Subfolder detection")
 		// B is a sub folder of A?
 
-		#warning("Call Index API")
-
 		folders.append(folder)
 		folder.index()
 	}
