@@ -23,7 +23,10 @@ struct SearchResultItem: View {
 		return (pathComps.count == shortPathComps.count ? "" : ".../") + shortPathComps.joined(separator: "/")
 	}
 
-	private func openPreview() {}
+	private func openPreview() {
+		// TODO: file content preview, popup or naigation
+		print("aaa")
+	}
 
 	var body: some View {
 		VStack(alignment: .leading) {
