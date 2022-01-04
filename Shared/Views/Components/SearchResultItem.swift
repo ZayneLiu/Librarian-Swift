@@ -12,9 +12,12 @@ import SwiftUI
 struct SearchResultItem: View {
 	init(result: SearchResult) {
 		self.result = result
+		self.fileContent = result.file.fileContent
 	}
 
 	@State var isPresented = true
+	@State var isFileContentOverviewPresented = false
+	@State var fileContent :String
 	private var result: SearchResult
 
 	private func getShortFilePath() -> String {
@@ -25,6 +28,7 @@ struct SearchResultItem: View {
 
 	private func openPreview() {
 		// TODO: file content preview, popup or naigation
+//		print(result.file.fileContent)
 		print("aaa")
 	}
 
@@ -70,6 +74,15 @@ struct SearchResultItem: View {
 					})
 				})
 			})
+			
+			DisclosureGroup("File Content") {
+				VStack{
+					TextEditor(text: $fileContent).lineSpacing(10).background(.black)
+				}.frame(maxHeight: 300)
+			}.padding(.leading)
+			
+			Divider()
+			
 			DisclosureGroup("Matches") {
 				ScrollView {
 					LazyVStack(alignment: .leading, content: {
