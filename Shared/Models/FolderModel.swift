@@ -17,6 +17,7 @@ class FolderModel: Identifiable {
 	var id = UUID()
 	var name: String = ""
 	var url = URL(fileURLWithPath: "")
+	var isOn: Bool = true
 	var folder: Folder
 
 	public init(url: URL) {

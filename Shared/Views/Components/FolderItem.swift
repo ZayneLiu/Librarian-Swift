@@ -39,7 +39,10 @@ struct FolderItem: View {
 					// 	}.buttonStyle(PlainButtonStyle())
 					// #endif
 				}
-			}
+			}.onChange(of: isOn, perform: { newValue in
+				folder.isOn = newValue
+			})
+
 			Divider().padding(0)
 			DisclosureGroup("Detail") {
 				HStack(alignment: .center) {

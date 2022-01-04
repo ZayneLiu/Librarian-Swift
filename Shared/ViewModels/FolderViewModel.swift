@@ -36,8 +36,9 @@ class FolderViewModel: ObservableObject {
 	public func search(keyword: String) -> [SearchResult] {
 		var res: [SearchResult] = []
 
-		folders.forEach { model in
-			res.insert(contentsOf: model.search(keyword: keyword), at: 0)
+		folders.forEach { folder in
+			if !folder.isOn { return }
+			res.insert(contentsOf: folder.search(keyword: keyword), at: 0)
 		}
 		return res
 	}
